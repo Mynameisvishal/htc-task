@@ -11,6 +11,7 @@
     transform: translate(-50%,-50%);
     font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
+    opacity: 0.88;
 }
 
 .banner p span{
