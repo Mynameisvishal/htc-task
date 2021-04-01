@@ -15,7 +15,7 @@
 
 .nav__brand{
     display: flex;
-    width: 40%;
+    /* width: 40%; */
     padding: 20px;
     height: 100%;
     
@@ -25,7 +25,8 @@
     font-family: Arial, Helvetica, sans-serif;
     color: rgba(63, 60, 60, 0.822);
     font-weight: 600;
-    font-size: 22px;
+    font-size: 1.7vw;
+    line-height: 35px;
 }
 
 .nav__links{
@@ -77,6 +78,16 @@ nav li,.nav__linksDown li {
     }
     .display__nav{
         display: flex !important;
+    }
+    .nav__brand h4{
+       
+        font-size: 3vw;
+    }
+  }
+@media screen and (max-width: 572px) {
+    .nav__brand h4{
+       
+        font-size: 5vw;
     }
   }
   
