@@ -100,9 +100,9 @@
     border: 1.6px solid #51c3c4 !important;
     font-size: small;
 }
-.col-sm-10{
+.col-sm-10,.radio_flex{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start
 }
 .form-check{
     
@@ -112,7 +112,11 @@
 .lang__{
     width: 300px;
 }
-
+.error{
+    width: 100%;
+   
+    color: red;
+}
 @media screen and (max-width: 1272px) {
     .form-group,.btn-group{
         min-width: 300px !important;

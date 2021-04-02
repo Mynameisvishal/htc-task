@@ -3,6 +3,7 @@ import './Footer.css';
 import linkedin from '../images/Linkedin.png';
 import twitter from '../images/Twitt.png';
 import facebook from '../images/FB.png';
+import uparrow from '../images/UpArrow.png';
 
 function Footer() {
     return (
@@ -34,6 +35,7 @@ function Footer() {
                     
                 </div>
             </div>
+            <img src={uparrow} className="uparrow" alt="up"/>
             <div className="copyrights">
             Copyright 2019 - company | All Rights Reserved 
             </div>
