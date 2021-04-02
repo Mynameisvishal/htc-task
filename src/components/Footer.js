@@ -4,8 +4,12 @@ import linkedin from '../images/Linkedin.png';
 import twitter from '../images/Twitt.png';
 import facebook from '../images/FB.png';
 import uparrow from '../images/UpArrow.png';
+import { Link, animateScroll as scroll} from 'react-scroll';
 
 function Footer() {
+    const scrollTop = ()=>{
+       scroll.scrollToTop();
+    }
     return (
         <div className="footer__">
             <div className="footer">
@@ -35,7 +39,7 @@ function Footer() {
                     
                 </div>
             </div>
-            <img src={uparrow} className="uparrow" alt="up"/>
+            <img onClick={scrollTop} src={uparrow} className="uparrow" alt="up"/>
             <div className="copyrights">
             Copyright 2019 - company | All Rights Reserved 
             </div>

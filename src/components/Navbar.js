@@ -17,7 +17,7 @@ const Navbar=()=> {
     
     return (
         <div className="navbar__">
-            <nav>
+            <nav id="nav">
                 <div className="nav__brand">
                     <img src={logo} width="35px" alt="logo" height="35px" />
                     <h4>Company Logo</h4>   

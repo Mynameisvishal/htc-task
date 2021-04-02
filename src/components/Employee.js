@@ -55,6 +55,13 @@ function Employee() {
         if(name ==="" || gender==="" || mobile ==="" || education ==="" || address ===""){
             setError("Please fill all fields");
             return;
+        }else if(languages.english=== false && languages.hindi=== false && languages.malayalam=== false && languages.tamil=== false && languages.telugu=== false){
+            console.log(languages.english);
+            setError("Minimum 1 language required");
+            return;
+        }else if(name.length<3){
+            setError("Minimum 3 characters required for Username");
+            return;
         }else{
             setError('');
         }
@@ -110,28 +117,28 @@ function Employee() {
                 <form>
                     <div className="form-group">
                         <label htmlFor="exampleInputName">Full name*</label>
-                        <input type="text" value={name} className="form-control" id="exampleInputName" onChange={(e)=>setname(e.target.value)} aria-describedby="emailHelp" placeholder="Type your name"/>
+                        <input type="text" value={name} className="form-control" id="exampleInputName" onChange={(e)=>setname(e.target.value)} aria-describedby="emailHelp" placeholder="Type your name" required/>
                     </div>
                     <div className="form-group">
                         Radio
                         <div className="radio_flex">
                             <div className="pr-5">
-                                <input type="radio" checked={gender === "Male"} onChange={()=>setGender("Male")} name="Male" id="Male"/>
+                                <input required type="radio" checked={gender === "Male"} onChange={()=>setGender("Male")} name="Male" id="Male"/>
                                 <label htmlFor="Male">Male</label>
                             </div>
                             <div>
-                                <input type="radio" checked={gender === "Female"} onChange={()=>setGender("Female")}  name="Female" id="Female"/>
+                                <input required type="radio" checked={gender === "Female"} onChange={()=>setGender("Female")}  name="Female" id="Female"/>
                                 <label htmlFor="Female">Female</label>
                             </div>
                         </div>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputMobile">Mobile*</label>
-                        <input type="number" value={mobile} onChange={(e)=>setMobile(e.target.value)}  className="form-control" id="exampleInputMobile" placeholder="number"/>
+                        <input required type="number" value={mobile} onChange={(e)=>setMobile(e.target.value)}  className="form-control" id="exampleInputMobile" placeholder="number"/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputEducation">Educational Qualification</label>
-                        <input type="text" value={education} onChange={(e)=>setEducation(e.target.value)} className="form-control" id="exampleInputEducation" placeholder="Type your Qualification"/>
+                        <input required type="text" value={education} onChange={(e)=>setEducation(e.target.value)} className="form-control" id="exampleInputEducation" placeholder="Type your Qualification"/>
                     </div>
                     <div className="form-group">
                         <label for="exampleFormControlSelect1">State</label>
@@ -145,7 +152,7 @@ function Employee() {
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">Address</label>
-                        <textarea className="form-control" value={address} onChange={(e)=>setAddress(e.target.value)} id="exampleFormControlTextarea1" rows="6" placeholder="Type your Address"/>
+                        <textarea required className="form-control" value={address} onChange={(e)=>setAddress(e.target.value)} id="exampleFormControlTextarea1" rows="6" placeholder="Type your Address"/>
                     </div>
                     <div className="form-group">
 

@@ -4,6 +4,7 @@
     width: 100%;
     background-color: #ECECEC;
     margin: 0 auto;
+    scroll-behavior: smooth;
 }
 .footer{
     display: flex;
@@ -68,12 +69,13 @@
     }
 }
 @media screen and (max-width: 750px) {
-    .footer{
-        display: flex;
-        position: relative;
-        width: 100%;
+    .footer__{
+       
         margin: 0;
+    }
+    .footer{
         padding: 20px 0;
+        margin-left: 0%;
     }
     .footer .footer_menu{
         padding: 0 10px;
