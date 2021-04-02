@@ -1,10 +1,7 @@
 .employee_{
     display: flex !important;
-    /* flex-grow: 30px; */
     flex-wrap: wrap;
-    /* max-height: 500px !important; */
-    /* height: 450px !important; */
-    /* height: auto; */
+   
 }
 
 .employee__emp{
@@ -22,7 +19,6 @@
     justify-content: center;
     text-align: left;
     margin-left: 20%;
-    /* transform: translate(-50%); */
 }
 
 .employee__emp h2{

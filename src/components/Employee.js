@@ -4,10 +4,10 @@ import employee from '../images/Employee.png';
 import { AuthContext } from '../reducer/reducer';
 
 function Employee() {
-    const { state,dispatch } = useContext(AuthContext);
+    const { dispatch } = useContext(AuthContext);
+
     const[name,setname] = useState("");
     const[gender,setGender] = useState(" ");
-    // const[gender,setGender] = useState(true);
     const[mobile,setMobile] = useState(0);
     const[State,setState]= useState("Chennai");
     const[education,setEducation] = useState("");
@@ -21,18 +21,17 @@ function Employee() {
 
     });
     const[error,setError] = useState('');
+
     const changeLanguage=(e)=>{
         const currentState = languages[e.target.name];
         if(currentState){
             setLanguages({...languages,[e.target.name]:false});
-            console.log("language "+e.target.name+""+!currentState);
         }else{
             setLanguages({...languages,[e.target.name]:true});
-            console.log("language "+e.target.name+""+!currentState);
         }
     }
 
-    const rest=()=>{
+    const reset=()=>{
         console.log(name+" "+gender+" "+address);
         setname('');
         setGender('');
@@ -52,6 +51,7 @@ function Employee() {
 
     const handleSubmit=(e)=>{
         e.preventDefault();
+        //validations
         if(name ==="" || gender==="" || mobile ==="" || education ==="" || address ===""){
             setError("Please fill all fields");
             return;
@@ -65,20 +65,22 @@ function Employee() {
         }else{
             setError('');
         }
+
+        //gathering data
         const English = languages.english ? "English " : "";
         const Tamil = languages.tamil ? "Tamil " : "";
         const Telugu = languages.telugu ? "Telugu " : "";
         const Hindi = languages.hindi ? "Hindi " : "";
         const Malayalam = languages.malayalam ? "english " : "";
         var lang = English + Tamil + Telugu + Hindi +Malayalam;
-        const langsplitter = lang.split(" ");
+        const langsplitter = lang.split(" "); // splitting languages
         if(langsplitter.length>1){
-           lang= langsplitter.join(", ");
+           lang= langsplitter.join(", "); // merging languages
         }
-        console.log(lang);
-        const storedvalue = JSON.parse(localStorage.getItem('empdata'));
+
+        //getting serial no from previous data
+        const storedvalue = JSON.parse(localStorage.getItem('empdata')); 
         const empid = (Number)(storedvalue[storedvalue.length-1].sno) + 1;
-        // console.log(values);
         const values=[{
             name,
             Gender:gender,
@@ -88,18 +90,14 @@ function Employee() {
             date: Date.now().toString(),
             sno:empid
         }];
-        console.log("state value below");
-        
-        
         const newValue= storedvalue.concat(values);
-        console.log(newValue);
         localStorage.setItem('empdata',JSON.stringify(newValue));
         dispatch({
             type:"EMPLOYEE",
             payload:newValue
         });
         alert('submitted');
-        rest();
+        reset();
     }
     
 
@@ -141,7 +139,7 @@ function Employee() {
                         <input required type="text" value={education} onChange={(e)=>setEducation(e.target.value)} className="form-control" id="exampleInputEducation" placeholder="Type your Qualification"/>
                     </div>
                     <div className="form-group">
-                        <label for="exampleFormControlSelect1">State</label>
+                        <label htmlFor="exampleFormControlSelect1">State</label>
                         <select className="form-control" value={State} onChange={(e)=>setState(e.target.value)} id="exampleFormControlSelect1">
                         <option>Chennai</option>
                         <option>Banglore</option>
@@ -192,7 +190,7 @@ function Employee() {
                         </div>
                     </div>
                     <div className="btn-group">
-                        <button type="button" onClick={rest} className="btn_reset">RESET</button>
+                        <button type="button" onClick={reset} className="btn_reset">RESET</button>
                         <button type="button" onClick={handleSubmit} className="btn_submit">SUBMIT</button>
                     </div>
                 </form>

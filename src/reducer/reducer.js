@@ -1,4 +1,4 @@
-import React, { useReducer, createContext, useEffect } from 'react';
+import React, { useReducer, createContext } from 'react';
 
 // reducer
 const EmployeeReducer = (state, action) => {

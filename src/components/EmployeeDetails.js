@@ -7,7 +7,8 @@ import { AuthContext } from '../reducer/reducer';
 
 function EmployeeDetails() {
     const { state,dispatch } = useContext(AuthContext);
-    const [LocalStorage,setLocalStorage]=useState(JSON.parse(localStorage.getItem('new-data')));
+
+    //Default data
     const data = [
         {sno:"1", name :"Thara",date:"001", Gender :"Female", Education :"B.E", Address:"#11 GST road Guindy, Chennai, Tamil nadu", Languages:"English, Tamil" },
         {sno:"2", name :"John",date:"002", Gender :"Male", Education :"B.E", Address:"#11 GST road Guindy, Chennai, Tamil nadu", Languages:"English, Tamil" },
@@ -18,12 +19,6 @@ function EmployeeDetails() {
     ];
 
     useEffect(()=>{
-        // console.log(localStorage.getItem('new-data'));
-        // setLocalStorage(JSON.parse(localStorage.getItem('new-data')));
-        // const datar = empdata
-        // datar.push(JSON.parse(localStorage.getItem('new-data')));
-        // console.log(datar);
-        // setEmpdata(datar);
         setEmpdata(JSON.parse(localStorage.getItem('empdata')));
     },[localStorage.getItem('empdata')])
 
@@ -37,8 +32,7 @@ function EmployeeDetails() {
         }else{
            localStorage.setItem("empdata",JSON.stringify(data));
            setEmpdata(data)
-        }
-        
+        }  
     }, []);
 
     const[empdata,setEmpdata]= useState(data);
@@ -55,57 +49,22 @@ function EmployeeDetails() {
         setEmpdata(newData);
         localStorage.setItem('empdata',JSON.stringify(newData));
     }
-//     useEffect(() => {
-       
-//         var datarule = JSON.stringify(data);
-//         localStorage.setItem("empData",datarule);
-//         console.log("local storage");
-        
-//   },[empdata]);
-    
-    
-        
-    
-    // const value=(data) => (
-    
-    //         data.map((stored,key)=>(
-    //         <tr key={key}>
-    //                  <th scope="row">{stored.sno}</th>
-    //                  <td>{stored.name}</td>
-    //                  <td>{stored.Gender}</td>
-    //                  <td>{stored.Education}</td>
-    //                  <td>{stored.Address}</td>
-    //                  <td>{stored.Languages}</td>
-    //                  <td><img name={stored.date} onClick={removeData} src={deleteicon} alt=""/></td>
-    //              </tr>
-    //         ))
-    // );
     const value=(data) => (
-    
-            data.map((stored,key)=>(
+        data.map((stored,key)=>(
             <tr key={key}>
-                     <th scope="row">{stored.sno}</th>
-                     <td>{stored.name}</td>
-                     <td>{stored.Gender}</td>
-                     <td>{stored.Education}</td>
-                     <td>{stored.Address}</td>
-                     <td>{stored.Languages}</td>
-                     <td><img name={stored.date} onClick={removeData} src={deleteicon} alt=""/></td>
-                 </tr>
-            ))
-    );
-        
-    // const value=(data) =>{
-    //     console.log(data.employees.data);
-    //     values(data.employees.data);
-    // }
-        
-        
-        
+                <th scope="row">{stored.sno}</th>
+                <td>{stored.name}</td>
+                <td>{stored.Gender}</td>
+                <td>{stored.Education}</td>
+                <td>{stored.Address}</td>
+                <td>{stored.Languages}</td>
+                <td><img name={stored.date} onClick={removeData} src={deleteicon} alt=""/></td>
+            </tr>
+        ))
+    );      
     
     return (
         <div className="EmployeeDetails">
-            {/* {console.log(state)} */}
             <h3>Employee Details</h3>
             <table className="table table-striped">
             <thead>
@@ -120,9 +79,7 @@ function EmployeeDetails() {
                 </tr>
             </thead>
             <tbody>
-                {/* {console.log(empdata)} */}
                 {value(empdata)}
-                {/* {value(state)} */}
             </tbody>
             </table>
         </div>

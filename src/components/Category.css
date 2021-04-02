@@ -15,7 +15,6 @@
 }
 
 .category_header h3{
-    /* font-family: "Poppins"; */
     font-weight: 700;
 }
 
@@ -63,8 +62,6 @@
     width: fit-content;
     font-weight: 500;
     padding-bottom: 3px;
-    /* text-decoration: underline; */
-    /* border-bottom: 1px solid #000; */
 }
 .category_overlap button::before{
     content: "";
@@ -76,17 +73,6 @@
     
 }
 
-/* @media screen and (max-width: 772px) {
-    .category_card img{
-        width: 250px;
-    }
-    .category_overlap{
-        width: 250px;
-        border: 2px solid black;
-        left: 0;
-    }
-} */
-
 @media screen and (max-width: 772px) {
     .category_card{
         width: 250px;
@@ -97,10 +83,6 @@
     .category_overlap{
         width: 250px;
         left: 20%;
-        /* left: 16%; */
-        /* padding:0 84px 0 0; */
-        /* margin: 0 30px;  */
-        /* padding: 0; */
     } 
    
 }

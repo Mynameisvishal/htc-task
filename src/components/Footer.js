@@ -4,7 +4,7 @@ import linkedin from '../images/Linkedin.png';
 import twitter from '../images/Twitt.png';
 import facebook from '../images/FB.png';
 import uparrow from '../images/UpArrow.png';
-import { Link, animateScroll as scroll} from 'react-scroll';
+import { animateScroll as scroll} from 'react-scroll';
 
 function Footer() {
     const scrollTop = ()=>{
