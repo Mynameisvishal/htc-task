@@ -25,7 +25,6 @@ function EmployeeDetails() {
 
     useEffect(() => {
         var check = localStorage.getItem("empdata") ? true : false;
-        console.log(check);
         if(check){
             const storedData = JSON.parse(localStorage.getItem("empdata"));
             setEmpdata(storedData)
@@ -39,13 +38,10 @@ function EmployeeDetails() {
 
     const removeData = (e)=>{
         const newData = empdata.filter(data=>data.date !== e.target.name);
-        console.log("After deletion below");
-        console.log(newData);
         dispatch({
             type:'EMPLOYEE',
             payload:newData
         });
-        console.log(state);
         setEmpdata(newData);
         localStorage.setItem('empdata',JSON.stringify(newData));
     }
@@ -79,6 +75,7 @@ function EmployeeDetails() {
                 </tr>
             </thead>
             <tbody>
+                
                 {value(empdata)}
             </tbody>
             </table>

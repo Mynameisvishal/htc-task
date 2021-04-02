@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from 'react';
+import React, { useReducer, createContext, useEffect } from 'react';
 
 // reducer
 const EmployeeReducer = (state, action) => {
@@ -30,25 +30,22 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
     const [state, dispatch] = useReducer(EmployeeReducer, initialState);
 
-    // useEffect(() => {
-    //     var check = localStorage.getItem("empdata") ? true : false;
-    //     console.log(check);
-    //     if(check){
-    //         // const storedData = JSON.parse(localStorage.getItem("empdata"));
-    //     // if(JSON.parse(localStorage.getItem("empdata"))){
-    //         const storedData = JSON.parse(localStorage.getItem("empdata"));
-    //         dispatch({
-    //             type: 'ADD_EMPLOYEE',
-    //             payload:{storedData}
-    //         })
-    //     }else{
-    //         dispatch({
-    //             type: 'ADD_EMPLOYEE',
-    //             payload:{data}
-    //         })
-    //     }
-        
-    // }, []);
+    useEffect(() => {
+        var check = localStorage.getItem("empdata") ? true : false;
+        if(check){
+            const storedData = JSON.parse(localStorage.getItem("empdata"));
+            dispatch({
+                type:"EMPLOYEE",
+                payload:storedData
+            })
+        }else{
+           localStorage.setItem("empdata",JSON.stringify(data));
+           dispatch({
+            type:"EMPLOYEE",
+            payload:data
+        });
+        }  
+    }, []);
 
     const value = { state, dispatch };
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
