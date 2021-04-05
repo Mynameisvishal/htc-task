@@ -2,21 +2,11 @@ import React,{useState,useEffect,useContext} from 'react';
 import './EmployeeDetails.css';
 import deleteicon from '../images/Delete.png';
 import { AuthContext } from '../reducer/reducer';
-
+import {data } from '../storage';
 
 
 function EmployeeDetails() {
     const { state,dispatch } = useContext(AuthContext);
-
-    //Default data
-    const data = [
-        {sno:"1", name :"Thara",date:"001", Gender :"Female", Education :"B.E", Address:"#11 GST road Guindy, Chennai, Tamil nadu", Languages:"English, Tamil" },
-        {sno:"2", name :"John",date:"002", Gender :"Male", Education :"B.E", Address:"#11 GST road Guindy, Chennai, Tamil nadu", Languages:"English, Tamil" },
-        {sno:"3", name :"Smith",date:"003", Gender :"Male", Education :"B.E", Address:"#11 GST road Guindy, Chennai, Tamil nadu", Languages:"English, Tamil" },
-        {sno:"4", name :"Eswar",date:"004", Gender :"Male", Education :"B.E", Address:"#11 GST road Guindy, Chennai, Tamil nadu", Languages:"Tamil" },
-        {sno:"5", name :"David",date:"005", Gender :"Male", Education :"B.E", Address:"#11 GST road Guindy, Chennai, Tamil nadu", Languages:"English, Tamil" },
-        {sno:"6", name :"Kumar",date:"006", Gender :"Male", Education :"B.E", Address:"#11 GST road Guindy, Chennai, Tamil nadu", Languages:"English, Tamil" },
-    ];
 
     useEffect(()=>{
         setEmpdata(JSON.parse(localStorage.getItem('empdata')));

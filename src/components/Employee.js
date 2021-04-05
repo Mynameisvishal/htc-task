@@ -2,6 +2,7 @@ import React,{useState, useContext} from 'react'
 import './Employee.css';
 import employee from '../images/Employee.png';
 import { AuthContext } from '../reducer/reducer';
+import {validateLanguage} from '../storage';
 
 function Employee() {
     const { dispatch } = useContext(AuthContext);
@@ -60,24 +61,13 @@ function Employee() {
             setError("Minimum 1 language required");
             return;
         }else if(name.length<3){
-            setError("Minimum 3 characters required for Username");
+            setError("Minimum 3 characters required for Full Name");
             return;
         }else{
             setError('');
         }
 
-        //gathering data
-        const English = languages.english ? "English " : "";
-        const Tamil = languages.tamil ? "Tamil " : "";
-        const Telugu = languages.telugu ? "Telugu " : "";
-        const Hindi = languages.hindi ? "Hindi " : "";
-        const Malayalam = languages.malayalam ? "Malaiyalam " : "";
-        var lang = English + Tamil + Telugu + Hindi +Malayalam;
-        const langsplitter = lang.split(" "); // splitting languages
-        console.log(langsplitter);
-        if(langsplitter.length>2){
-           lang= langsplitter.join(", "); // merging languages
-        }
+        const lang = validateLanguage(languages);
 
         //getting serial no from previous data
         const storedvalue = JSON.parse(localStorage.getItem('empdata')); 
@@ -98,7 +88,7 @@ function Employee() {
             payload:newValue
         });
         alert('submitted');
-        // reset();
+        reset();
     }
     
 
