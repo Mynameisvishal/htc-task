@@ -52,7 +52,7 @@ function Employee() {
     const handleSubmit=(e)=>{
         e.preventDefault();
         //validations
-        if(name ==="" || gender==="" || mobile ==="" || education ==="" || address ===""){
+        if(name.trim() === '' || gender.trim() === '' || mobile.trim() === '' || education.trim() ==="" || address.trim() ===""){
             setError("Please fill all fields");
             return;
         }else if(languages.english=== false && languages.hindi=== false && languages.malayalam=== false && languages.tamil=== false && languages.telugu=== false){
@@ -71,10 +71,11 @@ function Employee() {
         const Tamil = languages.tamil ? "Tamil " : "";
         const Telugu = languages.telugu ? "Telugu " : "";
         const Hindi = languages.hindi ? "Hindi " : "";
-        const Malayalam = languages.malayalam ? "english " : "";
+        const Malayalam = languages.malayalam ? "Malaiyalam " : "";
         var lang = English + Tamil + Telugu + Hindi +Malayalam;
         const langsplitter = lang.split(" "); // splitting languages
-        if(langsplitter.length>1){
+        console.log(langsplitter);
+        if(langsplitter.length>2){
            lang= langsplitter.join(", "); // merging languages
         }
 
@@ -97,7 +98,7 @@ function Employee() {
             payload:newValue
         });
         alert('submitted');
-        reset();
+        // reset();
     }
     
 
@@ -109,12 +110,12 @@ function Employee() {
                     <p>Information</p>
                 </div>
                 <img src={employee} width="150px" alt="employee" />
-            </div>
+            </div> 
             <div className="employee__form">
                 <div className="error">{error}</div>
                 <form>
                     <div className="form-group">
-                        <label htmlFor="exampleInputName">Full name*</label>
+                        <label htmlFor="exampleInputName">Full name <span style={{color: "red"}}>*</span></label>
                         <input type="text" value={name} className="form-control" id="exampleInputName" onChange={(e)=>setname(e.target.value)} aria-describedby="emailHelp" placeholder="Type your name" required/>
                     </div>
                     <div className="form-group">
@@ -131,7 +132,7 @@ function Employee() {
                         </div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="exampleInputMobile">Mobile*</label>
+                        <label htmlFor="exampleInputMobile">Mobile<span style={{color: "red"}}>*</span></label>
                         <input required type="number" value={mobile} onChange={(e)=>setMobile(e.target.value)}  className="form-control" id="exampleInputMobile" placeholder="number"/>
                     </div>
                     <div className="form-group">
